@@ -1,0 +1,37 @@
+CREATE DATABASE IF NOT EXISTS Trabalho_p3;
+
+USE trabalho_p3;
+
+DROP TABLE IF EXISTS Reserva;
+
+CREATE TABLE Reserva (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    dataCheckIn DATE NOT NULL,
+    dataCheckOut DATE NOT NULL
+);
+
+DELIMITER $$
+
+CREATE PROCEDURE create_reserva_table()
+BEGIN
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    BEGIN
+        ROLLBACK;
+        RESIGNAL;
+    END;
+
+    START TRANSACTION;
+
+    DROP TABLE IF EXISTS Reserva;
+    CREATE TABLE Reserva (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        nome VARCHAR(255) NOT NULL,
+        dataCheckIn DATE NOT NULL,
+        dataCheckOut DATE NOT NULL
+    );
+
+    COMMIT;
+END $$
+
+DELIMITER ;
