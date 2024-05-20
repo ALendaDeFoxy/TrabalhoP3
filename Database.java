@@ -10,7 +10,7 @@ import java.sql.Statement;
         public static void main(String[] args) {
             String url = "jdbc:mysql://localhost:3306/Trabalho_p3";
             String username = "root";
-            String password = "Victor99498743";
+            String password = "12345678";
             Connection connection = null;
             Statement statement = null;
 
